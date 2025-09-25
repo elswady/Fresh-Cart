@@ -1,0 +1,36 @@
+<div class="my-16 flex flex-wrap items-center">
+  <div class="w-full lg:w-1/4 text-center">
+    <img [src]="product.imageCover" class="rounded-md" alt="" />
+  </div>
+  <div class="w-full lg:w-3/4 p-2.5">
+    <h2 class="text-4xl font-light mb-4">
+      {{ product.title }}
+    </h2>
+    <p class="text-gray-500 mb-10">
+      {{ product.description }}
+    </p>
+    <span class="text-green-400">{{ product.category.name }}</span>
+    <div class="flex justify-between items-center mb-2 mt-2 p-1">
+      <span>{{ product.price }} EGP</span>
+      <span
+        ><i class="fa text-[10px] fa-star text-yellow-400"></i
+        ><span class="text-gray-500">{{ product.ratingsAverage }}</span></span
+      >
+    </div>
+    <div class="items-center justify-between grid grid-cols-12 mt-3">
+      <button
+        (click)="addItemToCart(product._id)"
+        class="text-white py-1.5 rounded bg-green-500 hover:bg-green-600 col-span-10 sm:col-span-10 md:col-span-11"
+      >
+        <i class="fa fa-plus"></i> add to cart
+      </button>
+
+      <span
+        (click)="addItemToWishList(product._id)"
+        class="px-1.5 m-auto col-span-2 sm:col-span-2 md:col-span-1"
+      >
+        <i class="fa-solid fa-heart text-2xl" [ngClass]="{ 'text-red-500': wishListIds.has(product._id), 'text-main': !wishListIds.has(product._id) }"></i>
+      </span>
+    </div>
+  </div>
+</div>

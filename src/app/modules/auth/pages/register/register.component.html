@@ -1,0 +1,92 @@
+<div class="max-w-md mx-auto my-12 border border-gray-300 p-5 rounded-2xl">
+  <h1 class="font-bold mb-5 text-2xl">Register</h1>
+  <form action="" [formGroup]="authForm" (ngSubmit)="getValue()">
+    <div class="mb-5">
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900"
+        >Your name</label
+      >
+      <input
+        formControlName="name"
+        type="text"
+        class="bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 block w-full p-2.5"
+        placeholder="Type your name..."
+      />
+      <error-message [control]="authForm.get('name')"></error-message>
+    </div>
+    <div class="mb-5">
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900"
+        >Your email</label
+      >
+      <input
+        formControlName="email"
+        type="email"
+        class="bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Type your email..."
+      />
+      <error-message [control]="authForm.get('email')"></error-message>
+    </div>
+    <div class="mb-5 relative">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900"
+        >Your password</label
+      >
+      <input
+        formControlName="password"
+        [type]="isShowPassword ? 'password' : 'text'"
+        class="bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Type your password..."
+      />
+      <error-message [control]="authForm.get('password')"></error-message>
+      <span (click)="showPassword()" class="absolute top-9.5 right-2"
+        ><i
+          [class]="
+            isShowPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'
+          "
+          class="text-gray-800 text-sm"
+        ></i
+      ></span>
+    </div>
+    <div class="mb-5 relative">
+      <label
+        for="repassword"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >repassword</label
+      >
+      <input
+        formControlName="rePassword"
+        [type]="isShowRePassword ? 'password' : 'text'"
+        class="bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="repassword..."
+      />
+      @if(authForm.getError('misMatch') && authForm.get('rePassword')?.touched){
+      <div
+        class="bg-red-100 border my-3 border-red-400 text-red-700 px-4 py-3 rounded relative"
+      >
+        <ul class="list-none pl-5">
+          <li>Password not match</li>
+        </ul>
+      </div>
+      }
+      <span (click)="showRePassword()" class="absolute top-9.5 right-2"
+        ><i
+          [class]="
+            isShowRePassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'
+          "
+          class="text-gray-800 text-sm"
+        ></i
+      ></span>
+    </div>
+    <button
+      [disabled]="isLoading"
+      class="bg-main hover:bg-main/80 transition-all duration-300 rounded text-white px-5 py-2 cursor-pointer"
+    >
+      @if(!isLoading){ Register }@else { Loading... }
+    </button>
+    @if (errorMsg) {
+    <div
+      class="bg-red-100 border my-3 border-red-400 text-red-700 px-4 py-3 rounded relative"
+    >
+      {{ errorMsg }}
+    </div>
+    }
+  </form>
+</div>

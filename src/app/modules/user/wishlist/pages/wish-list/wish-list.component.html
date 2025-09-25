@@ -1,0 +1,17 @@
+@if(isLoading) { @if(wishListDetails.count != 0){
+<section class="my-container m-auto my-10 bg-light p-8 rounded">
+  <h1 class="text-3xl font-medium">Wish List:</h1>
+
+  @for (product of wishListDetails.data; track $index) {
+  <wish-list-card
+    [productData]="product"
+    (removeItemFromWishList)="removItemFromWishList($event)"
+    (addItemToCart)="addProductToCart($event)"
+  ></wish-list-card>
+  }
+</section>
+}@else {
+<h2 class="my-10 text-center text-main text-4xl">Wishlist Empty</h2>
+} }@else {
+<h2 class="my-10 text-center text-main text-4xl">Loading....</h2>
+}

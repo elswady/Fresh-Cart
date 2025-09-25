@@ -1,0 +1,17 @@
+<section class="py-8">
+  <h2 class="text-main text-4xl text-center mb-2">All Brands</h2>
+  <div class="grid grid-cols-12">
+    @for (brand of brandsData; track $index) {
+    <a
+      class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-4 xl:col-span-3 shadow-xl py-3 my-3 mx-1.5 rounded-md"
+    >
+      <div>
+        <div><img [src]="brand.image" alt="" class="w-full" /></div>
+        <div class="p-3">
+          <h2 class="text-center text-main text-md">{{ brand.name }}</h2>
+        </div>
+      </div>
+    </a>
+    }
+  </div>
+</section>

@@ -1,0 +1,118 @@
+<nav class="bg-light">
+  <div
+    class="flex my-container flex-wrap md:flex-nowrap m-auto justify-between items-center p-4"
+  >
+    <div class="logo">
+      <a>
+        <img
+          routerLink="/"
+          src="./images/freshcart-logo.svg"
+          class="w-full"
+          alt="freshcart-logo"
+        />
+      </a>
+    </div>
+    <button (click)="toogleMobile()" class="md:hidden cursor-pointer">
+      <i class="fa-solid fa-bars text-[25px]"></i>
+    </button>
+    <div
+      [class.hidden]="!isMobileMode"
+      class="linkes my-5 md:my-auto grow md:flex w-full flex-wrap md:flex-row flex-col justify-between items-center px-10"
+    >
+      @if (authType == 'user') {
+      <ul class="flex gap-4 flex-col md:flex-row">
+        <li>
+          <a
+            routerLink="/home"
+            routerLinkActive="text-main"
+            class="hover:text-main"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/products"
+            routerLinkActive="text-main"
+            class="hover:text-main"
+            >Products</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/categories"
+            routerLinkActive="text-main"
+            class="hover:text-main"
+            >Categories</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/brands"
+            routerLinkActive="text-main"
+            class="hover:text-main"
+            >Brands</a
+          >
+        </li>
+      </ul>
+      }
+      <ul
+        class="ms-auto mt-4 md:mt-0 gap-4 flex flex-col md:border-0 md:flex-row"
+      >
+        @if (authType == 'auth') {
+        <li>
+          <a
+            routerLink="/login"
+            routerLinkActive="text-main"
+            class="hover:text-main"
+            >Login</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/register"
+            routerLinkActive="text-main"
+            class="hover:text-main"
+            >Register</a
+          >
+        </li>
+        }@else {
+        <li>
+          <a
+            routerLink="/wish-list"
+            routerLinkActive="text-main"
+            class="hover:text-main relative"
+            >Wish list<span><i class="fa-solid fa-heart text-md"></i></span>
+            <div
+              class="absolute bottom-4.5 left-17 bg-main text-sm text-white h-4.5 w-4.5 flex items-center justify-center rounded-full"
+            >
+              <span>{{ wishListCount }}</span>
+            </div></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/cart"
+            routerLinkActive="text-main"
+            class="hover:text-main relative"
+            >Cart<span><i class="fa-solid fa-cart-shopping text-md"></i></span>
+            <div
+              class="absolute bottom-4.5 left-9.5 bg-main text-sm text-white h-4.5 w-4.5 flex items-center justify-center rounded-full"
+            >
+              <span>{{ cartCount }}</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            (click)="logout()"
+            routerLink="/logout"
+            routerLinkActive="text-main"
+            class="hover:text-main"
+            >Logout</a
+          >
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

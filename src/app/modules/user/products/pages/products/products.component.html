@@ -1,0 +1,15 @@
+<section class="my-5">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2"
+  >
+    @for (product of products; track $index) {
+    <product-card
+      (addToWishList)="addToWishList($event)"
+      (addToCart)="addToCart($event)"
+      [product]="product"
+      [addingSuccess]="addingSuccess"
+      [inWishList]="wishListIds.has(product._id)"
+    ></product-card>
+    }
+  </div>
+</section>

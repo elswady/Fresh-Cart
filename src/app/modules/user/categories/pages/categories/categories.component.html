@@ -1,0 +1,23 @@
+<section class="py-8">
+  <h2 class="text-main text-4xl text-center mb-2">All Categories</h2>
+  <div class="grid grid-cols-12">
+    @for (category of categoriesData; track $index) {
+    <a
+      class="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 xl:col-span-4 shadow-xl py-3 my-3 mx-1.5 rounded-md"
+    >
+      <div>
+        <div class="w-full h-90">
+          <img
+            [src]="category.image"
+            class="w-full h-full object-cover"
+            alt=""
+          />
+        </div>
+        <div class="p-3">
+          <h2 class="text-center text-main text-xl">{{ category.name }}</h2>
+        </div>
+      </div>
+    </a>
+    }
+  </div>
+</section>

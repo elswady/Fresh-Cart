@@ -1,0 +1,47 @@
+<div class="max-w-md mx-auto my-25 border border-gray-300 p-5 rounded-2xl">
+  <h1 class="font-bold mb-5 text-2xl">Address Now:</h1>
+  <form action="" [formGroup]="addressForm" (ngSubmit)="getValue()">
+    <div class="mb-5">
+      <label for="text" class="block mb-2 text-sm font-medium text-gray-900"
+        >Your details</label
+      >
+      <input
+        formControlName="details"
+        type="text"
+        class="bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Type your details..."
+      />
+    </div>
+    <error-message [control]="addressForm.get('details')"></error-message>
+    <div class="mb-5 relative">
+      <label for="number" class="block mb-2 text-sm font-medium text-gray-900"
+        >Your phone</label
+      >
+      <input
+        formControlName="phone"
+        type="number"
+        class="bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Type your phone..."
+      />
+    </div>
+    <error-message [control]="addressForm.get('phone')"></error-message>
+    <div class="mb-5 relative">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900"
+        >Your city</label
+      >
+      <input
+        formControlName="city"
+        type="text"
+        class="bg-gray-50 border border-main text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Type your city..."
+      />
+    </div>
+    <error-message [control]="addressForm.get('city')"></error-message>
+    <button
+      [disabled]="isLoading"
+      class="bg-main hover:bg-main/80 transition-all duration-300 rounded text-white px-5 py-2 cursor-pointer"
+    >
+      @if(!isLoading){ Pay }@else { Loading... }
+    </button>
+  </form>
+</div>

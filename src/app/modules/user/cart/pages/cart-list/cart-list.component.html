@@ -1,0 +1,39 @@
+@if(isLoading) { @if(cartDetails.numOfCartItems != 0){
+<section class="my-container m-auto my-10 bg-light p-8 rounded">
+  <button
+    (click)="clearCart()"
+    class="flex bg-red-900 text-white px-3 py-2 rounded hover:bg-red-800 ms-auto"
+  >
+    Clear
+  </button>
+  <h1 class="text-3xl font-medium">Shop Cart:</h1>
+  <p class="text-main my-2">
+    Total Cart Price : {{ cartDetails.data.totalCartPrice }} EGP
+  </p>
+  @for (product of cartDetails.data.products; track $index) {
+  <cart-item
+    (updateQuantity)="updateQuantity($event.id, $event.count)"
+    (removeItem)="RemoveItem($event)"
+    [product]="product"
+  ></cart-item>
+  }
+  <div class="flex justify-between items-center mt-10">
+    <button
+      routerLink="/home"
+      class="bg-main text-white px-4 py-2 cursor-pointer rounded-md hover:bg-main/80"
+    >
+      Continue Shopping
+    </button>
+    <button
+      [routerLink]="['/address', cartDetails.cartId]"
+      class="bg-black text-white px-4 py-2 cursor-pointer rounded-md hover:bg-black/90"
+    >
+      Check Out
+    </button>
+  </div>
+</section>
+}@else {
+<h2 class="my-10 text-center text-main text-4xl">Cart Empty</h2>
+} }@else {
+<h2 class="my-10 text-center text-main text-4xl">Loading....</h2>
+}
